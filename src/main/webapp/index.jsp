@@ -61,8 +61,9 @@
 										    <input type="file" class="form-control" name="audio" placeholder="Audio" class="form-control">
 						                </div>
 						            </div>
-        							<form class="form-horizontal" action="speechToText" enctype="multipart/form-data" method="POST">						          
-						            <button type="submit" name="send" value="Procesar" class="btn btn-default"></button>
+        							<form class="form-horizontal" action="speechToText" enctype="multipart/form-data" method="GET">	
+        								<input type="hidden" name="nombreArchivo" value="Normal">					          
+						            	<button type="submit" name="send" value="Procesar" class="btn btn-default"></button>
 	    							</form>
 						        </div>
 						    </div>
