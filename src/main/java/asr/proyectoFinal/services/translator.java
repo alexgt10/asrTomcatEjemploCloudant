@@ -3,10 +3,10 @@ package asr.proyectoFinal.services;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
-import com.ibm.watson.language_translator.v3.LanguageTranslator;
-import com.ibm.watson.language_translator.v3.model.TranslateOptions;
-import com.ibm.watson.language_translator.v3.model.TranslationResult;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
+import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
+import com.ibm.watson.developer_cloud.language_translator.v3.model.TranslateOptions;
+import com.ibm.watson.developer_cloud.language_translator.v3.model.TranslationResult;
 
 
 public class translator {
@@ -15,7 +15,7 @@ public class translator {
 		
 		
 		
-		IamOptions options = new IamOptions.Builder()
+		com.ibm.watson.developer_cloud.service.security.IamOptions options = new IamOptions.Builder()
 			    .apiKey("Ov7mdVMQqJ9oi9LsayqscUPE0H1eOZDYEtlwSTrT-pz9")
 			    .build();
 		LanguageTranslator languageTranslator = new LanguageTranslator("2018-05-01", options);
@@ -27,7 +27,7 @@ public class translator {
 				  .modelId("en-es")
 				  .build();
 		
-		TranslationResult translationResult = languageTranslator.translate(translateOptions).execute().getResult();
+		TranslationResult translationResult = (TranslationResult) languageTranslator.translate(translateOptions).execute().getTranslations();
 		System.out.println(translationResult);
 		String traduccionJSON = translationResult.toString();
         JsonParser parser = new JsonParser();

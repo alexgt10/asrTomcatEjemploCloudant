@@ -14,30 +14,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.ibm.cloud.sdk.core.service.security.IamOptions;
-import com.ibm.watson.speech_to_text.v1.model.RecognizeOptions;
-import com.ibm.watson.speech_to_text.v1.model.SpeechRecognitionResults;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechRecognitionResults;
 //import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.BaseRecognizeCallback;
-import com.ibm.watson.developer_cloud.tone_analyzer.v3.ToneAnalyzer;
 import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneAnalysis;
 import com.ibm.watson.developer_cloud.tone_analyzer.v3.model.ToneOptions;
-import com.ibm.watson.speech_to_text.v1.SpeechToText;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 
 //import asr.proyectoFinal.dao.CloudantPalabraStore;
 import asr.proyectoFinal.dominio.Palabra;
 
+@SuppressWarnings({ "deprecation", "deprecation" })
 @MultipartConfig
 @WebServlet(urlPatterns = {"/speechToText"})
 public class speechToText extends HttpServlet {
   
-  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+  @SuppressWarnings("deprecation")
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
   {
 
     IamOptions opt = new IamOptions.Builder()
     	    .apiKey("Lr9NL6FgnT9HUzETR0RIgvJ7qBNeaj3H5Zk0bH15G7tE")
     	    .build();
-    SpeechToText service = new SpeechToText(opt);
+    @SuppressWarnings("deprecation")
+	SpeechToText service = new SpeechToText(opt);
     service.setEndPoint("https://gateway-lon.watsonplatform.net/speech-to-text/api");
     
     Part filePart = request.getPart("audio"); 
@@ -82,12 +84,12 @@ public class speechToText extends HttpServlet {
 			      }
       			};
       			
-     SpeechRecognitionResults speechRecognitionResults = service.recognize(recognizeOptions).execute().getResult();
+     SpeechRecognitionResults speechRecognitionResults = (SpeechRecognitionResults) service.recognize(recognizeOptions).execute().getResults();
      System.out.println(speechRecognitionResults);			
     
      String resultado = new String("");
     
-    SpeechRecognitionResults result = service.recognize(recognizeOptions).execute().getResult();
+    SpeechRecognitionResults result = (SpeechRecognitionResults) service.recognize(recognizeOptions).execute().getResults();
 	if(result.getResults().size()>0) {
 		 for (int i = 0; i < result.getResults().size() ; i++)  {
 		System.out.println(result.getResults().get(i).getAlternatives().get(0).getTranscript());
