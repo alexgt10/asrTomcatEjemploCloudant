@@ -73,7 +73,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                 <div class="tm-img-gallery gallery-one">
                                 <!-- Gallery One pop up connected with JS code below -->
                                     <div class="grid-item">
-                                        <figure>
+                                        <figure class="effect-sadie">
                                             <img src="img/tm-img-01-tn.jpg" alt="Image" class="img-fluid tm-img">
                                                 <figcaption>
                                                 <h2 class="tm-figure-title">Sia</h2>
