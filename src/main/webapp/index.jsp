@@ -1,123 +1,362 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-    <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- Mobile Meta -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- Site Meta -->
-    <title>Transcriptor APP</title>
-    
-<!--     Site Icons -->
-<!--     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" /> -->
-<!--     <link rel="apple-touch-icon" href="images/apple-touch-icon.png"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- Google Fonts -->
- 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700" rel="stylesheet"> 
+    <title>Music Analyzer</title>
+<!--
+Fluid Gallery Template
+http://www.templatemo.com/tm-500-fluid-gallery
+-->
+    <!-- load stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">  
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="Font-Awesome-4.7/css/font-awesome.min.css">                
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">                                      
+    <!-- Bootstrap style -->
+    <link rel="stylesheet" href="css/hero-slider-style.css">                              
+    <!-- Hero slider style (https://codyhouse.co/gem/hero-slider/) -->
+    <link rel="stylesheet" href="css/magnific-popup.css">                                 
+    <!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
+    <link rel="stylesheet" href="css/templatemo-style.css">                                   
 
-	<!-- Custom & Default Styles -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="css/carousel.css">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" type="text/css" href="estilos.css">
-	<link rel="icon" href="images/icono-1.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script>
+            var tm_gray_site = true;
+            
+            if(tm_gray_site) {
+                $('html').addClass('gray');
+            }
+            else {
+                $('html').removeClass('gray');   
+            }
+        </script>
 </head>
-<body>
-	<div id="wrapper">
-		<header class="header site-header">
-			<div class="container">
-				<nav class="navbar navbar-default yamm">
-				    <div class="container-fluid">
-<!-- 				        <div class="navbar-header"> -->
-<!-- 							<a class="navbar-brand" href="/index.jsp"><img src="images/logo.png" alt="Linda"></a> -->
-<!-- 				        </div> -->
-				        <div id="navbar" class="navbar-collapse collapse">
-				            <ul class="nav navbar-nav navbar-right">
-				                <li class="active"><a href="index.jsp">Home</a></li>
-				                </ul>
-				        </div><!--/.nav-collapse -->
-				    </div><!--/.container-fluid -->
-				</nav><!-- end nav -->
-			</div><!-- end container -->
-		</header><!-- end header -->
 
-		<section class="section transheader homepage parallax" data-stellar-background-ratio="0.5" style="background-image:url('upload/bg_04.jpg');">
-			<div class="container">
-				<div class="row">	
-					<div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
-						<h2>Let's Analysis Your transcription </h2>
-						<p class="lead">Now you can just transcript a record with just one click</p><div class="item-box">
-						        <div class="item-top form-inline">
-						            <div class="form-group">
-						                <div class="input-group2">
-						                    <span class="input-addon">
-												<i class="fa fa-link"></i>
-											</span>
-										    <input type="file" class="form-control" name="audio" placeholder="Audio" class="form-control">
-						                </div>
-						            </div>
-        							<form class="form-horizontal" action="speechToText" enctype="multipart/form-data" method="POST">						          
-						            <input type="submit" name="send" value="Procesar" class="btn btn-default"/>
-	    							</form>
-						        </div>
-						    </div>
-					</div><!-- end col -->
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</section><!-- end section -->
+    <body>
+        
+        <!-- Content -->
+        <div class="cd-hero">
 
-		<section class="section nopad">
-			<div class="container-fluid">
-				<div class="row text-center">
-					<div class="col-md-3 col-sm-6 nopad first">
-						<div class="home-service c1">
-							<i class="flaticon-competition"></i>
-							<p>First step: upload your record</p>
-						</div><!-- end home-service -->
-					</div><!-- end col -->
+            <!-- Navigation -->        
+            <div class="cd-slider-nav">
+                <nav class="navbar">
+                    <div class="tm-navbar-bg">
+                        
+                        <a class="navbar-brand text-uppercase" href="index-gray.html"><i class="fa fa-picture-o tm-brand-icon"></i>Music Analyzer</a>
 
-					<div class="col-md-3 col-sm-6 nopad">
-						<div class="home-service c2">
-							<i class="flaticon-chat"></i>
-							<p>Second step: Click on process button</p>
-						</div><!-- end home-service -->
-					</div><!-- end col -->
+                        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
+                            &#9776;
+                        </button>
+                        <div class="collapse navbar-toggleable-md text-xs-center text-uppercase tm-navbar" id="tmNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="nav-item active selected">
+                                    <a class="nav-link" href="#0" data-no="1">gallery <span class="sr-only">(current)</span></a>
+                                </li>                                
+                            </ul>
+                        </div>                        
+                    </div>
 
-					<div class="col-md-3 col-sm-6 nopad">
-						<div class="home-service c3">
-							<i class="flaticon-domain"></i>
-							<p>Third step: see the results</p>
-						</div><!-- end home-service -->
-					</div><!-- end col -->
+                </nav>
+            </div> 
 
-					<div class="col-md-3 col-sm-6 nopad last">
-						<div class="home-service c4">
-							<i class="flaticon-medal"></i>
-							<p>Finally: start again</p>
-						</div><!-- end home-service -->
-					</div><!-- end col -->
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</section><!-- end section -->
-	</div><!-- end wrapper -->
+            <ul class="cd-hero-slider">
+                <!-- Page 1 Gallery One -->
+                <li class="selected">                    
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="1" data-page-type="gallery">
+                            <div class="tm-img-gallery-container">
+                                <div class="tm-img-gallery gallery-one">
+                                <!-- Gallery One pop up connected with JS code below -->
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-01-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                                <figcaption>
+                                                <h2 class="tm-figure-title">Sia</h2>
+                                                <p class="tm-figure-description">Chandeller</p>
+                                                <a href="speechToText?cancion=sia"></a>
+                                                </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-02-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Ed Sheeran</h2>
+                                                <p class="tm-figure-description">Perfect</p>
+                                                <a href="speechToText?cancion=edsheeran"></a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-03-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">The Greatest Showman</h2>
+                                                <p class="tm-figure-description">Rewrite the stars</p>
+                                                <a href="speechToText?cancion=rewrite_the_stars"></a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-04-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Beyonce</h2>
+                                                <p class="tm-figure-description">Halo</p>
+                                                <a href="speechToText?cancion=beyonce"></a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>  
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-05-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Justin Beiber</h2>
+                                                <p class="tm-figure-description">Love yourself</p>
+                                                <a href="speechToText?cancion=justin"></a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-06-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Miley Cyrus</h2>
+                                                <p class="tm-figure-description">Wrecking ball</p>
+                                                <a href="speechToText?cancion=miley"></a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-07-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Sia</h2>
+                                                <p class="tm-figure-description">Cheap thrills</p>
+                                                <a href="speechToText?cancion=sia2"></a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-08-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Rihanna</h2>
+                                                <p class="tm-figure-description">Diamonds</p>
+                                                <a href="speechToText?cancion=rihana"></a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>   
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-09-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Nine</strong></span></h2>
+                                                <p class="tm-figure-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                <a href="img/tm-img-09.jpg">View more</a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-10-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Ten</strong></span></h2>
+                                                <p class="tm-figure-description">Maecenas purus sem, lobortis id odio in sapien.</p>
+                                                <a href="img/tm-img-10.jpg">View more</a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-11-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Eleven</strong></span></h2>
+                                                <p class="tm-figure-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                <a href="img/tm-img-11.jpg">View more</a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-12-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Twelve</strong></span></h2>
+                                                <p class="tm-figure-description">Maecenas purus sem, lobortis id odio in sapien.</p>
+                                                <a href="img/tm-img-12.jpg">View more</a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-13-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Thirteen</strong></span></h2>
+                                                <p class="tm-figure-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                <a href="img/tm-img-13.jpg">View more</a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-14-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Fourteen</strong></span></h2>
+                                                <p class="tm-figure-description">Maecenas purus sem, lobortis id odio in sapien.</p>
+                                                <a href="img/tm-img-14.jpg">View more</a>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-15-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Fifteen</strong></span></h2>
+                                                <p class="tm-figure-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                <a href="img/tm-img-15.jpg">View more</a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="img/tm-img-16-tn.jpg" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">Image <span><strong>Sixteen</strong></span></h2>
+                                                <p class="tm-figure-description">Maecenas purus sem, lobortis id odio in sapien.</p>
+                                                <a href="img/tm-img-16.jpg">View more</a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>                                                                       
+                                </div>                                 
+                            </div>
+                        </div>                                                    
+                    </div>                    
+                </li>
+               
+            </ul> <!-- .cd-hero-slider -->         
+        </div> <!-- .cd-hero -->
+        
 
-	<!-- jQuery Files -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/parallax.js"></script>
-	<script src="js/animate.js"></script>
-	<script src="js/owl.carousel.js"></script>
-	<script src="js/custom.js"></script>
+        <!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
+        <div id="loader-wrapper">
+            
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+        </div>
+        
+        <!-- load JS files -->
+        
+        <script src="js/tether.min.js"></script> <!-- Tether (http://tether.io/)  --> 
+        <script src="js/bootstrap.min.js"></script>             <!-- Bootstrap js (v4-alpha.getbootstrap.com/) -->
+        <script src="js/hero-slider-main.js"></script>          <!-- Hero slider (https://codyhouse.co/gem/hero-slider/) -->
+        <script src="js/jquery.magnific-popup.min.js"></script> <!-- Magnific popup (http://dimsemenov.com/plugins/magnific-popup/) -->
+        
+        <script>
+
+            function adjustHeightOfPage(pageNo) {
+
+                var pageContentHeight = 0;
+
+                var pageType = $('div[data-page-no="' + pageNo + '"]').data("page-type");
+
+                if( pageType != undefined && pageType == "gallery") {
+                    pageContentHeight = $(".cd-hero-slider li:nth-of-type(" + pageNo + ") .tm-img-gallery-container").height();
+                }
+                else {
+                    pageContentHeight = $(".cd-hero-slider li:nth-of-type(" + pageNo + ") .js-tm-page-content").height() + 20;
+                }
+               
+                // Get the page height
+                var totalPageHeight = $('.cd-slider-nav').height()
+                                        + pageContentHeight
+                                        + $('.tm-footer').outerHeight();
+
+                // Adjust layout based on page height and window height
+                if(totalPageHeight > $(window).height()) 
+                {
+                    $('.cd-hero-slider').addClass('small-screen');
+                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", totalPageHeight + "px");
+                }
+                else 
+                {
+                    $('.cd-hero-slider').removeClass('small-screen');
+                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", "100%");
+                }
+            }
+
+            /*
+                Everything is loaded including images.
+            */
+            $(window).load(function(){
+
+                adjustHeightOfPage(1); // Adjust page height
+
+//                 /* Collapse menu after click 
+//                 -----------------------------------------*/
+//                 $('#tmNavbar a').click(function(){
+//                     $('#tmNavbar').collapse('hide');
+
+//                     adjustHeightOfPage($(this).data("no")); // Adjust page height       
+//                 });
+
+                /* Browser resized 
+                -----------------------------------------*/
+        
+                // Remove preloader (https://ihatetomatoes.net/create-custom-preloading-screen/)
+                $('body').addClass('loaded');
+
+                // Write current year in copyright text.
+                $(".tm-copyright-year").text(new Date().getFullYear());
+                           
+            });
+
+            /* Google map
+            ------------------------------------------------*/
+            var map = '';
+            var center;
+
+            function initialize() {
+                var mapOptions = {
+                    zoom: 13,
+                    center: new google.maps.LatLng(37.779724, -122.452152),
+                    scrollwheel: false
+                };
+            
+                map = new google.maps.Map(document.getElementById('google-map'),  mapOptions);
+
+                google.maps.event.addDomListener(map, 'idle', function() {
+                  calculateCenter();
+                });
+            
+                google.maps.event.addDomListener(window, 'resize', function() {
+                  map.setCenter(center);
+                });
+            }
+
+            function calculateCenter() {
+                center = map.getCenter();
+            }
+
+            function loadGoogleMap(){
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=initialize';
+                document.body.appendChild(script);
+            }
+        
+            // DOM is ready
+            $(function() {   
+                loadGoogleMap(); // Google Map
+            });
+
+        </script>            
 
 </body>
 </html>

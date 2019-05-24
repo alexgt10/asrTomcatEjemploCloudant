@@ -27,11 +27,9 @@ public class speechToText extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
   {
 	  String cancion = request.getParameter("cancion");
-	  
-	  System.out.println(cancion);
-	  
+	  	  
 	  String path_mp3 = request.getRealPath("/audio");
-	  System.out.println(path_mp3);
+	  //System.out.println(path_mp3);
 	  
 	  IamOptions opt = new IamOptions.Builder()
 	    	    .apiKey("Lr9NL6FgnT9HUzETR0RIgvJ7qBNeaj3H5Zk0bH15G7tE")
@@ -41,7 +39,6 @@ public class speechToText extends HttpServlet {
 	    service.setEndPoint("https://gateway-lon.watsonplatform.net/speech-to-text/api");
 	  
 	  FileInputStream fileStream = new FileInputStream(new File(path_mp3 + "/" + cancion.toString() + ".mp3"));
-      System.out.println(fileStream.toString());
 
 	  RecognizeOptions recognizeOptions = new RecognizeOptions.Builder()
 	    	    .audio(fileStream)
@@ -50,13 +47,13 @@ public class speechToText extends HttpServlet {
 	    	    .build();
 	  
    SpeechRecognitionResults result = service.recognize(recognizeOptions).execute();
-   System.out.println("Resultado" + result);			
+   //System.out.println("Resultado" + result);			
   
    String resultado = new String("");
 
    if(result.getResults().size()>0) {
 		 for (int i = 0; i < result.getResults().size() ; i++)  {
-		System.out.println(result.getResults().get(i).getAlternatives().get(0).getTranscript());
+		//System.out.println(result.getResults().get(i).getAlternatives().get(0).getTranscript());
 		resultado = resultado.concat(result.getResults().get(i).getAlternatives().get(0).getTranscript());
 		}
 	}
@@ -65,7 +62,7 @@ public class speechToText extends HttpServlet {
 	request.setAttribute("original", resultado);	    		 
 	request.setAttribute("traducido", traduccion);  
 	  
-	request.getRequestDispatcher("feedback.jsp").forward(request, response);
+	request.getRequestDispatcher("/feedback/feedback.jsp").forward(request, response);
 	  
 	  
   }

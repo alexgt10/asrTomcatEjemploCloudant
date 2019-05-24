@@ -27,7 +27,7 @@ public class translator {
 				  .build();
 		
 		Translation translationResult = languageTranslator.translate(translateOptions).execute().getTranslations().get(0);
-		System.out.println(translationResult);
+		//System.out.println(translationResult);
 		String traduccionJSON = translationResult.toString();
         JsonParser parser = new JsonParser();
         JsonObject rootObj = parser.parse(traduccionJSON).getAsJsonObject();
