@@ -1,13 +1,11 @@
 package asr.proyectoFinal.services;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
 import com.ibm.watson.developer_cloud.language_translator.v3.model.TranslateOptions;
 import com.ibm.watson.developer_cloud.language_translator.v3.model.Translation;
-import com.ibm.watson.developer_cloud.language_translator.v3.model.TranslationResult;
 
 
 public class translator {
