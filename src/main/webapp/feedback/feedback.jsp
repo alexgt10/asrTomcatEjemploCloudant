@@ -80,7 +80,7 @@
 
 					<div class="col-md-6">
 						<div class="feature-widget">
-							<h3><a href="indexv1.jsp"><strong>Go back</strong></a></h3>
+							<h3><a href="index.jsp"><strong>Go back</strong></a></h3>
 						</div>	
 					</div>
 				</div>
