@@ -62,7 +62,13 @@
 
 					<div class="col-md-6">
 						<div class="feature-img">
-							<img src="/feedback/images/<%=request.getParameter("cancion")%>.jpg" alt="" class="img-responsive wow fadeInRight">
+						<%
+						String cancion = (String)request.getParameter("cancion");
+						System.out.println(cancion);
+						String imagen = "/images/"+cancion.toString()+".jpg";
+						System.out.println(imagen);
+						%>
+							<img src="<%=imagen%>" alt="" class="img-responsive wow fadeInRight">
 						</div>
 					</div>
 				</div><!-- end row -->
@@ -72,7 +78,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="feature-img">
-							<img src="upload/screen_04.png" alt="" class="img-responsive wow fadeInLeft">
+							<img src="<%=imagen%>" alt="" class="img-responsive wow fadeInLeft">
 						</div>
 					</div>
 
@@ -83,9 +89,9 @@
 						</div><!-- end about-widget -->	
 					</div><!-- end col -->
 				</div><!-- end row -->
+				<a href="index.jsp">Go back</a>
 			</div><!-- end container -->
 		</section><!-- end section -->
-		<a href="index.jsp">Go back</a>
 	<!-- jQuery Files -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
