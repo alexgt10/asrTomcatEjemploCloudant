@@ -38,17 +38,6 @@
 <body>
 	
 	<div id="wrapper">
-		
-		<section class="section transheader bgcolor ptop180">
-			<div class="container">
-				<div class="row">	
-					<div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
-						<img src="upload/service_title_01.png" alt="" class="img-responsive">
-						<h2>Resultados</h2>
-					</div><!-- end col -->
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</section><!-- end section -->
 
 		<section class="section">
 			<div class="container">
@@ -62,34 +51,39 @@
 
 					<div class="col-md-6">
 						<div class="feature-img">
-						<%
-						String cancion = (String)request.getParameter("cancion");
-						System.out.println(cancion);
-						String imagen = "/images/"+cancion.toString()+".jpg";
-						System.out.println(imagen);
-						%>
-							<img src="<%=imagen%>" alt="" class="img-responsive wow fadeInRight">
 						</div>
 					</div>
 				</div><!-- end row -->
 
-				<hr class="invis1">
-
 				<div class="row">
-					<div class="col-md-6">
-						<div class="feature-img">
-							<img src="<%=imagen%>" alt="" class="img-responsive wow fadeInLeft">
-						</div>
-					</div>
-
 					<div class="col-md-6">
 						<div class="feature-widget">
 							<h3><strong>Translation to spanish</strong></h3>
 							<p>${requestScope.traducido}</p>
 						</div><!-- end about-widget -->	
 					</div><!-- end col -->
-				</div><!-- end row -->
-				<a href="index.jsp">Go back</a>
+
+					<div class="col-md-6">
+						<div class="feature-img">
+						</div>
+					</div>
+				</div>
+
+				<hr class="invis1">
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="feature-img">
+							<img src="" alt="" class="img-responsive wow fadeInLeft">
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="feature-widget">
+							<h3><a href="indexv1.jsp"><strong>Go back</strong></a></h3>
+						</div>	
+					</div>
+				</div>
 			</div><!-- end container -->
 		</section><!-- end section -->
 	<!-- jQuery Files -->
