@@ -34,108 +34,12 @@ import asr.proyectoFinal.dominio.Palabra;
 @WebServlet(urlPatterns = {"/speechToText"})
 public class speechToText extends HttpServlet {
   
-  @SuppressWarnings("deprecation")
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-  {
-
-    IamOptions opt = new IamOptions.Builder()
-    	    .apiKey("Lr9NL6FgnT9HUzETR0RIgvJ7qBNeaj3H5Zk0bH15G7tE")
-    	    .build();
-    @SuppressWarnings("deprecation")
-	SpeechToText service = new SpeechToText(opt);
-    service.setEndPoint("https://gateway-lon.watsonplatform.net/speech-to-text/api");
-    
-    Part filePart = request.getPart("audio"); 
-    
-    String appPath = request.getServletContext().getRealPath("");
-	 String savePath = appPath + "audio";
-	 System.out.println(savePath);
-	 File fileSaveDir = new File(savePath);
-	 if (!fileSaveDir.exists()) {
-	     fileSaveDir.mkdir();
-	 }
-	 
-	 String savedFile = "";
-	
-	 for (Part part : request.getParts()) {
-	         String fileName = extractFileName(part);
-	         fileName = new File(fileName).getName();
-	         savedFile=savePath + File.separator + fileName;
-	         part.write(savedFile);
-	 }
-    
-	 String ext = savedFile.substring(savedFile.lastIndexOf(".")+1);    
-	 
-	 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-    
-    RecognizeOptions recognizeOptions = new RecognizeOptions.Builder()
-    	    .audio(new FileInputStream(fileName))
-    	    .contentType("audio/mp3")
-    	    .model("en-US_BroadbandModel")
-    	    .keywords(Arrays.asList("colorado", "tornado", "tornadoes"))
-    	    .keywordsThreshold((float) 0.5)
-    	    .maxAlternatives(3)
-    	    .build();
-      
-      BaseRecognizeCallback baseRecognizeCallback =
-    		    new BaseRecognizeCallback() {
-    		      public void onTranscription (SpeechRecognitionResults speechRecognitionResults) {
-    		          System.out.println(speechRecognitionResults);
-    		      }
-			      @Override
-			      public void onDisconnected() {
-			        System.exit(0);
-			      }
-      			};
-      			
-     SpeechRecognitionResults speechRecognitionResults = (SpeechRecognitionResults) service.recognize(recognizeOptions).execute().getResults();
-     System.out.println(speechRecognitionResults);			
-    
-     String resultado = new String("");
-    
-    SpeechRecognitionResults result = (SpeechRecognitionResults) service.recognize(recognizeOptions).execute().getResults();
-	if(result.getResults().size()>0) {
-		 for (int i = 0; i < result.getResults().size() ; i++)  {
-		System.out.println(result.getResults().get(i).getAlternatives().get(0).getTranscript());
-		resultado = resultado.concat(result.getResults().get(i).getAlternatives().get(0).getTranscript());
-		}
-	}
-		
-	String traduccion= translator.translate(resultado);
-	
-//	Palabra palabra = new Palabra();
-//	CloudantPalabraStore store = new CloudantPalabraStore();
-//
-//		if(store.getDB() == null) 
-//		{
-//		}
-//		else
-//		{
-//			palabra.setName(traduccion);
-//			store.persist(palabra);
-//		}
-//	
-	
-	request.setAttribute("original", resultado);	    		 
-	request.setAttribute("traducido", traduccion);  
-	request.getRequestDispatcher("feedback.jsp").forward(request, response);
-  }
-  
-  private String extractFileName(Part part) {
-      String contentDisp = part.getHeader("content-disposition");
-      String[] items = contentDisp.split(";");
-      for (String s : items) {
-          if (s.trim().startsWith("filename")) {
-              return s.substring(s.indexOf("=") + 2, s.length()-1);
-          }
-      }
-      return "";
-  }
   
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
   {
-	  String parametro = request.getParameter("nombreArchivo");
-	  System.out.println(parametro);
+	  String cancion = request.getParameter("cancion");
+	  
+	  System.out.println(cancion);
 	  
 	  String path_mp3 = request.getRealPath("/audio");
 	  System.out.println(path_mp3);
@@ -147,35 +51,21 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 		SpeechToText service = new SpeechToText(opt);
 	    service.setEndPoint("https://gateway-lon.watsonplatform.net/speech-to-text/api");
 	  
-	  FileInputStream fileStream = new FileInputStream(new File(path_mp3 + "/" + parametro + ".mp3"));
-	  
+	  FileInputStream fileStream = new FileInputStream(new File(path_mp3 + "/" + cancion.toString() + ".mp3"));
+      System.out.println(fileStream.toString());
+
 	  RecognizeOptions recognizeOptions = new RecognizeOptions.Builder()
 	    	    .audio(fileStream)
 	    	    .contentType("audio/mp3")
-	    	    .model("es-ES_BroadbandModel")
-	    	    .keywords(Arrays.asList("colorado", "tornado", "tornadoes"))
-	    	    .keywordsThreshold((float) 0.5)
-	    	    .maxAlternatives(3)
+	    	    .model("en-US_BroadbandModel")
 	    	    .build();
 	  
-	  BaseRecognizeCallback baseRecognizeCallback =
-  		    new BaseRecognizeCallback() {
-  		      public void onTranscription (SpeechRecognitionResults speechRecognitionResults) {
-  		          System.out.println(speechRecognitionResults);
-  		      }
-			      @Override
-			      public void onDisconnected() {
-			        System.exit(0);
-			      }
-    			};
-    			
    SpeechRecognitionResults result = service.recognize(recognizeOptions).execute();
    System.out.println("Resultado" + result);			
   
    String resultado = new String("");
-//  
-//   SpeechRecognitionResult result = service.recognize(recognizeOptions).execute().getResults().get(0);
-	if(result.getResults().size()>0) {
+
+   if(result.getResults().size()>0) {
 		 for (int i = 0; i < result.getResults().size() ; i++)  {
 		System.out.println(result.getResults().get(i).getAlternatives().get(0).getTranscript());
 		resultado = resultado.concat(result.getResults().get(i).getAlternatives().get(0).getTranscript());
@@ -186,7 +76,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	request.setAttribute("original", resultado);	    		 
 	request.setAttribute("traducido", traduccion);  
 	  
-	  request.getRequestDispatcher("feedback.jsp").forward(request, response);
+	request.getRequestDispatcher("feedback.jsp").forward(request, response);
 	  
 	  
   }

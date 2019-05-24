@@ -25,7 +25,7 @@ public class translator {
 		
 		TranslateOptions translateOptions = new TranslateOptions.Builder()
 				  .addText(palabra)
-				  .modelId("es-en")
+				  .modelId("en-es")
 				  .build();
 		
 		Translation translationResult = languageTranslator.translate(translateOptions).execute().getTranslations().get(0);
@@ -33,13 +33,9 @@ public class translator {
 		String traduccionJSON = translationResult.toString();
         JsonParser parser = new JsonParser();
         JsonObject rootObj = parser.parse(traduccionJSON).getAsJsonObject();
-		//String wordCount = rootObj.get("word_count").getAsString(); 
-//		JsonArray traducciones = rootObj.getAsJsonArray("translation"); 
 		String traduccionPrimera = palabra;
-		
-		
-//		if(traducciones.size()>0)
-			traduccionPrimera = rootObj.get("translation").getAsString();
+			
+		traduccionPrimera = rootObj.get("translation").getAsString();
 		
 		return traduccionPrimera;
 		

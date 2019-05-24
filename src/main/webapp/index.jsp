@@ -13,6 +13,11 @@
     
     <!-- Site Meta -->
     <title>Transcriptor APP</title>
+    
+<!--     Site Icons -->
+<!--     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" /> -->
+<!--     <link rel="apple-touch-icon" href="images/apple-touch-icon.png"> -->
+
 	<!-- Google Fonts -->
  	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700" rel="stylesheet"> 
 
@@ -61,9 +66,8 @@
 										    <input type="file" class="form-control" name="audio" placeholder="Audio" class="form-control">
 						                </div>
 						            </div>
-        							<form class="form-horizontal" action="speechToText" enctype="multipart/form-data" method="GET">	
-        								<input type="hidden" name="nombreArchivo" value="Normal">					          
-						            	<button type="submit" name="send" value="Procesar" class="btn btn-default"></button>
+        							<form class="form-horizontal" action="speechToText" enctype="multipart/form-data" method="POST">						          
+						            <input type="submit" name="send" value="Procesar" class="btn btn-default"/>
 	    							</form>
 						        </div>
 						    </div>
